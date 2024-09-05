@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSemTemplate", "src\AppSemTemplate\AppSemTemplate.csproj", "{ADB7061D-CE71-444D-899F-BFA8E491465E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADB7061D-CE71-444D-899F-BFA8E491465E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB7061D-CE71-444D-899F-BFA8E491465E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB7061D-CE71-444D-899F-BFA8E491465E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB7061D-CE71-444D-899F-BFA8E491465E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8BAB13B5-B6BB-43F0-A4EA-E3D49E988925}
+	EndGlobalSection
+EndGlobal
