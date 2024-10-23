@@ -1,5 +1,6 @@
 using AppSemTemplate.Data;
 using AppSemTemplate.Extensions;
+using AppSemTemplate.Services;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,10 +17,11 @@ builder.Services.Configure<RazorViewEngineOptions>(options =>
     options.AreaViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
 });
 
-builder.Services.AddRouting(options =>
-    options.ConstraintMap["slugify"] = typeof(RouteSlugifyParameterTransformer));
+//builder.Services.AddRouting(options =>
+//    options.ConstraintMap["slugify"] = typeof(RouteSlugifyParameterTransformer));
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<IOperacao, Operacao>();
 
 builder.Services.AddDbContext<AppDbContext>(o =>
     o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -34,9 +36,12 @@ app.UseRouting();
     name: "default",
     pattern: "{controller:slugify=Home}/{action:slugify=Index}/{id?}");*/
 
-app.MapControllerRoute(
-    name: "areas",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+// Rota de Área Genérica (não necessário se usar especializada)
+//app.MapControllerRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+// Rota de Áreas Especializadas
+app.MapAreaControllerRoute("AreaProdutos", "Produtos", "Produtos/{controller=Cadastro}/{action=Index}/{id?}");
+app.MapAreaControllerRoute("AreaVendas", "Vendas", "Vendas/{controller=Gestao}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "dafault",
