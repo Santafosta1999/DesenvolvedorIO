@@ -1,11 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Produto } from '../produto';
 import { ProdutoService } from '../produtos.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { TitleCasePipe } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-lista-produto',
-  imports: [NgFor],
+  imports: [
+    NgFor,
+    NgIf,
+    NgSwitch,
+    NgSwitchCase,
+    RouterModule,
+    TitleCasePipe,
+    CurrencyPipe
+  ],
   templateUrl: './lista-produto.component.html'
 })
 export class ListaProdutoComponent implements OnInit {
