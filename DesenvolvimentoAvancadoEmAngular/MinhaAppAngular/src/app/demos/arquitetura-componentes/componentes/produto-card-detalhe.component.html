@@ -6,7 +6,7 @@
 
                 <h4 class="card-title">{{ produto.nome | titlecase }}</h4>
 
-                <div *[ngSwitch]="produto.ativo">
+                <div [ngSwitch]="produto.ativo">
                     <p *ngSwitchCase="true">Em estoque</p>
                     <p *ngSwitchCase="false">Fora de estoque</p>
                 </div>
@@ -14,18 +14,20 @@
                 <div *ngIf="!produto.ativo" class="card-body">
                     <div>
                         <h4>Avise-me quando chegar</h4>
+                        <ng-content select=".acabou"></ng-content>
                     </div>
                 </div>
 
                 <div *ngIf="produto.ativo" class="card-body">
                     <div>
                         <h4>{{ produto.valor | currency:'BRL':'symbol':'1.2-2':'pt' }}</h4>
+                        <ng-content select=".corre"></ng-content>
                     </div>
                 </div>
 
                 <div class="card-footer">
-                    <a class="btn btn-success" href="javascript:void(0)">
-                        Botão
+                    <a [ngClass]="produto.ativo ? 'btn btn-success' : 'btn btn-danger'" (click)="emitirEvento()" href="javascript:void(0)">
+                        <span><span [ngClass]="produto.ativo ? 'fa fa-toggle-on' : 'fa fa-toggle-off'"> </span> Status</span>
                     </a>
                 </div>
             </div>
