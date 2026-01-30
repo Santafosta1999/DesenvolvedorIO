@@ -73,11 +73,6 @@ export class ProdutoDashboardComponent implements OnInit, AfterViewInit {
       alert('clicou no texto!');
       return;
     });
-
-    console.log(this.botoes);
-    this.botoes.forEach(p => {
-      console.log(p.produto);
-    });
   }
 
   mudarStatus(event: Produto) {
