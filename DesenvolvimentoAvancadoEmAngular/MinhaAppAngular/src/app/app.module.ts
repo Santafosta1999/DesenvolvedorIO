@@ -14,12 +14,16 @@ import { CadastroComponent } from './demos/reactiveForms/cadastro/cadastro.compo
 import { NavegacaoModule } from './navegacao/navegacao.module';
 
 import { AppRoutingModule } from './app.routes';
+import { AuthGuard } from './services/app.guard';
+import { CadastroGuard } from './services/cadastro.guard';
+import { FilmesComponent } from './demos/pipes/filmes/filmes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SobreComponent,
-    CadastroComponent
+    CadastroComponent,
+    FilmesComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,8 @@ import { AppRoutingModule } from './app.routes';
     AppRoutingModule
   ],
   providers: [
-
+    AuthGuard,
+    CadastroGuard
   ],
   bootstrap: [AppComponent]
 })

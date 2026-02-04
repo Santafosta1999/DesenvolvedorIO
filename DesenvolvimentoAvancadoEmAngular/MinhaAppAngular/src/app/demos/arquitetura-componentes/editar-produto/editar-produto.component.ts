@@ -25,6 +25,7 @@ export class EditarProdutoComponent implements OnInit {
     // fazer comunicação com o backend
 
     this.router.navigate(['/produtos']);
+    // this.router.navigateByUrl('/produtos');
   }
 
 }
