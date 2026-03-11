@@ -1,9 +1,10 @@
-import { Component, Input } from "@angular/core";
-import { Produto } from "../models/produto";
+import { Component, Input } from '@angular/core';
+import { Produto } from '../models/produto';
 
 @Component({
     selector: 'produto-count',
-    template: `
+    template:
+        `
         <div>
             <h3>Produtos</h3>
             <div>
@@ -12,8 +13,7 @@ import { Produto } from "../models/produto";
         </div>
     `
 })
-
-export class ProdutoCountComponent{
+export class ProdutoCountComponent {
     @Input()
     produtos: Produto[];
 

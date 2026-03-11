@@ -1,10 +1,13 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
+
 
 @Pipe({
     name: 'filesize'
 })
 export class FileSizePipe implements PipeTransform {
+    
     transform(size: number) {
+        
         let tamanhoCalculado = (size / (1024 * 1024))
         let extension = ' MB'
 
@@ -15,4 +18,5 @@ export class FileSizePipe implements PipeTransform {
 
         return tamanhoCalculado.toFixed(2) + extension;
     }
+
 }

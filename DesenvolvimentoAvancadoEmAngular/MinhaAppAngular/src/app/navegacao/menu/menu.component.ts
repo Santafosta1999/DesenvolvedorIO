@@ -44,14 +44,22 @@ export class MenuComponent {
       admin: false
     },
     {
+      link: '/todo',
+      name: 'To Do',
+      exact: false,
+      admin: false
+    },
+    {
       link: '/admin',
       name: 'Admin',
-      exact: true,
-      admin: true
+      exact: false,
+      admin: false
     }
-  ]
+  ];
 
 }
+
+
 
 interface Nav {
   link: string,

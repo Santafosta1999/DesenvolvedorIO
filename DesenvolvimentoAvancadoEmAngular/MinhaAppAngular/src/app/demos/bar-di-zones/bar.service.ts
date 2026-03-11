@@ -1,48 +1,52 @@
-import { Inject, Injectable, Injector } from "@angular/core";
-import { HttpClient } from "@angular/common/http"
-import { BAR_UNIDADE_CONFIG, BarUnidadeConfig } from "./bar.config";
+import { Injectable, Inject, Injector } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BAR_UNIDADE_CONFIG, BarUnidadeConfig } from './bar.config';
 
 export function BarFactory(http: HttpClient, injector: Injector) {
-    return new BarServices(http, injector.get(BAR_UNIDADE_CONFIG));
+
+  return new BarServices(http, injector.get(BAR_UNIDADE_CONFIG));
 }
 
 @Injectable()
 export class BarServices {
-    constructor(private http: HttpClient,
-        @Inject(BAR_UNIDADE_CONFIG) private config: BarUnidadeConfig
-    ) { }
 
-    public obterUnidade(): string {
-        return 'Unidade ID: ' + this.config.unidadeId + ' Token: ' + this.config.unidadeToken;
-    }
+  constructor(
+    private http: HttpClient,
+    @Inject(BAR_UNIDADE_CONFIG) private config: BarUnidadeConfig
+  ) { }
 
-    obterBebidas(): string {
-        return 'Bebidas';
-    }
+  public obterUnidade(): string {
+    return 'Unidade ID: ' + this.config.unidadeId + ' Token: ' + this.config.unidadeToken
+  }
 
-    obterPorcoes(): string {
-        return 'Porções';
-    }
+  obterBebidas(): string {
+    return 'Bebidasss';
+  }
 
-    obterRefeicoes(): string {
-        return 'Refeições';
-    }
+  obterPorcoes(): string {
+    return 'Porções';
+  }
+
+  obterRefeicoes(): string {
+    return 'Refeições';
+  }
 }
 
 export class BarServicesMock {
-    obterBebidas(): string {
-        return 'Mock';
-    }
 
-    obterPorcoes(): string {
-        return 'Mock';
-    }
+  obterBebidas(): string {
+    return 'Mock';
+  }
 
-    obterRefeicoes(): string {
-        return 'Mock';
-    }
+  obterPorcoes(): string {
+    return 'Mock';
+  }
+
+  obterRefeicoes(): string {
+    return 'Mock';
+  }
 }
 
 export abstract class BebidaService {
-    obterBebidas: () => string
+  obterBebidas: () => string
 }

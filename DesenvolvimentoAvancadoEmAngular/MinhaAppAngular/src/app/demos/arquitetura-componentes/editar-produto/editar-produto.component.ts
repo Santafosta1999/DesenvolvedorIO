@@ -12,7 +12,10 @@ export class EditarProdutoComponent implements OnInit {
 
   produto: Produto;
 
-  constructor(private route: ActivatedRoute, private produtoService: ProdutoService, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private produtoService: ProdutoService,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.params
@@ -22,10 +25,10 @@ export class EditarProdutoComponent implements OnInit {
   }
 
   salvar(){
-    // fazer comunicação com o backend
+    // fazer comunicacao com backend
 
     this.router.navigate(['/produtos']);
-    // this.router.navigateByUrl('/produtos');
+    //this.router.navigateByUrl('/produtos');
   }
 
 }

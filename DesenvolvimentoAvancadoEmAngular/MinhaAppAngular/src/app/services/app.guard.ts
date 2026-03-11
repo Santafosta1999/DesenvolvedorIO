@@ -1,16 +1,17 @@
-import { Injectable } from "@angular/core";
-import { CanActivate, CanLoad } from "@angular/router";
+import { Injectable } from '@angular/core';
+import { CanLoad, CanActivate } from '@angular/router';
 
 @Injectable()
 export class AuthGuard implements CanLoad, CanActivate {
-    
-    user = { admin: true, logged: false}
 
-    canLoad(): boolean {
+    user = { admin: true, logged: false }
+
+    canLoad() : boolean {
         return this.user.admin;
     }
 
-    canActivate(): boolean {
+    canActivate() : boolean {
         return this.user.logged;
     }
+
 }

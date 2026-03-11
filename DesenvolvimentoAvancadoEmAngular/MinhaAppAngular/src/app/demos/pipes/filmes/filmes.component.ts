@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Filme } from './filme';
 import { ImageFormaterPipe } from './image.pipe';
 
@@ -14,10 +14,15 @@ export class FilmesComponent implements OnInit {
   filmes: Filme[];
   mapped: Filme[];
 
-  constructor(private imagemFormat: ImageFormaterPipe){}
+  api_path: string;
+  filmeServiceReturn: string;
+  bebidas: string;
+
+  constructor(
+    private imageFormat: ImageFormaterPipe) { }
 
   ngOnInit() {
-    
+
     this.filmes = [
       {
         nome: 'Um Sonho de Liberdade',
@@ -34,7 +39,7 @@ export class FilmesComponent implements OnInit {
         tamanho: '1342177280'
       },
       {
-        nome: 'Batman: O Cavaleiro das Trevas',
+        nome: 'Batman: O Cavaleiro das Trevas ',
         dataLancamento: new Date('08/01/2008'),
         valor: 70.00,
         imagem: 'Batman2008.jpg',
@@ -48,13 +53,13 @@ export class FilmesComponent implements OnInit {
         tamanho: '1254589899'
       },
       {
-        nome: 'Pulp Fiction: Tempo de Violência',
+        nome: 'Pulp Fiction: Tempo de Violência ',
         dataLancamento: new Date('01/08/1994'),
         valor: 190.00,
         imagem: 'PulpFiction.jpg',
         tamanho: '773039680'
       }
-    ]
+    ];
 
     this.mapped = this.filmes.map(filme => {
       return {
@@ -62,9 +67,8 @@ export class FilmesComponent implements OnInit {
         dataLancamento: filme.dataLancamento,
         valor: filme.valor,
         tamanho: filme.tamanho,
-        imagem: this.imagemFormat.transform(filme.imagem, 'default', true)
+        imagem: this.imageFormat.transform(filme.imagem, 'default', true)
       }
     });
   }
-
 }
