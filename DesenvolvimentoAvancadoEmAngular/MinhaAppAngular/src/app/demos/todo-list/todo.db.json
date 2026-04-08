@@ -4,7 +4,7 @@
       "id": 1,
       "nome": "Responder e-mails",
       "finalizado": false,
-      "iniciado": false
+      "iniciado": true
     },
     {
       "id": 2,
@@ -16,13 +16,13 @@
       "id": 3,
       "nome": "Finalizar curso de Angular",
       "finalizado": false,
-      "iniciado": true
+      "iniciado": false
     },
     {
       "id": 4,
       "nome": "Publicar feedback no LinkedIn",
-      "finalizado": false,
-      "iniciado": true
+      "finalizado": true,
+      "iniciado": false
     },
     {
       "id": 5,
@@ -39,8 +39,8 @@
     {
       "id": 7,
       "nome": "Comprar Café",
-      "finalizado": true,
-      "iniciado": false
+      "finalizado": false,
+      "iniciado": true
     },
     {
       "id": 8,
