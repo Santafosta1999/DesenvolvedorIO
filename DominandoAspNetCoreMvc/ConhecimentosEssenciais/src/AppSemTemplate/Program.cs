@@ -1,6 +1,7 @@
 using AppSemTemplate.Data;
 using AppSemTemplate.Extensions;
 using AppSemTemplate.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
@@ -47,6 +48,19 @@ builder.Services.AddHsts(options =>
     options.ExcludedHosts.Add("www.example.com");
 });
 
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = true;
+})
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<AppDbContext>();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("PodeExcluirPermanentemente", policy =>
+        policy.RequireRole("Admin"));
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -54,14 +68,16 @@ if (app.Environment.IsDevelopment())
 
 } else
 {
-    app.UseHsts()
-  }
+    app.UseHsts();
+}
 
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthorization();
 
 /*app.MapControllerRoute(
     name: "default",
@@ -77,6 +93,8 @@ app.MapAreaControllerRoute("AreaVendas", "Vendas", "Vendas/{controller=Gestao}/{
 app.MapControllerRoute(
     name: "dafault",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 using (var serviceScope = app.Services.CreateScope())
 {
