@@ -10,6 +10,12 @@ public static class MvcConfig
 {
     public static WebApplicationBuilder AddMvcConfiguration(this WebApplicationBuilder builder)
     {
+        builder.Configuration
+            .SetBasePath(builder.Environment.ContentRootPath)
+            .AddJsonFile("appsettings.json", true, true)
+            .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", true, true)
+            .AddEnvironmentVariables();
+
         builder.Services.AddControllersWithViews(options =>
         {
             options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
@@ -34,6 +40,9 @@ public static class MvcConfig
             options.ExcludedHosts.Add("example.com");
             options.ExcludedHosts.Add("www.example.com");
         });
+
+        builder.Services.Configure<ApiConfiguration>(
+            builder.Configuration.GetSection(ApiConfiguration.ConfigName));
 
         return builder;
     }
